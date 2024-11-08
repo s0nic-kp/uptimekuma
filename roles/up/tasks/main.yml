@@ -1,0 +1,47 @@
+---
+# tasks file for up
+- name: 1. Install docker required system packages
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+      - software-properties-common
+    state: latest
+    update_cache: true
+
+- name: 2. Add Docker GPG apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: 3. Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu jammy stable
+    state: present
+
+- name: 4. Update apt and install docker
+  apt:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+    update_cache: true
+
+- name: 5. copy Docker Compose files
+  copy:
+    src: files/docker-compose.yml
+    dest: /home/sonic/docker-compose.yml
+
+# use files parameter to use docker-compose.yml files
+# mind the _v2 suffix
+- name: 6. deploy Docker Compose stack
+  community.docker.docker_compose_v2:
+    project_src: /home/sonic
+    files: docker-compose.yml
+  
