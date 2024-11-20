@@ -2,18 +2,17 @@
 
 This script is the process of installing uptimekuma as a tool to monitor open source based applications. The uptimekuma application is installed in docker and run using ansible from the initial process until it runs.
 
-##Prerequisite
-
+## Prerequisite
 To run this ansible you will need tools such as
 1. visual studio code as an editor tool
 2. personal computer or server with ansible installed
 3. shell to execute ansible commands
 
-##Design
+## Design
 
 ![Untitled-2024-09-19-1011](https://github.com/user-attachments/assets/be05054c-d346-4b24-be61-4fe54abd29a2)
 
-##How to use?
+## How to use?
 
 Download all parts. Customise the configuration according to my blog
 ```
