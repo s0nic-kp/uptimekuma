@@ -36,12 +36,12 @@
 - name: 5. copy Docker Compose files
   copy:
     src: files/docker-compose.yml
-    dest: /home/sonic/docker-compose.yml
+    dest: /home/destination/docker-compose.yml
 
 # use files parameter to use docker-compose.yml files
 # mind the _v2 suffix
 - name: 6. deploy Docker Compose stack
   community.docker.docker_compose_v2:
-    project_src: /home/sonic
+    project_src: /home/destination
     files: docker-compose.yml
   
